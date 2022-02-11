@@ -1,0 +1,13 @@
+---
+# tasks file for mariadb
+
+ - name: Installation MariaDB
+   yum:
+    name: mariadb-server
+    state: present
+
+ - name: Redémarrage Maria DB
+   systemd: 
+    name: mariadb
+    state: restarted
+    enabled: yes

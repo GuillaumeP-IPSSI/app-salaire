@@ -1,0 +1,5 @@
+ - name: Déploiement Application Salaires
+   hosts: all
+   roles:
+     - mariadb
+     - apache

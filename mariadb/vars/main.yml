@@ -1,0 +1,13 @@
+---
+# vars file for mariadb
+
+mysql_user: "root"
+
+mysql_password: "$Annie0812"
+
+mysql_dbname: "app-salaire"
+
+db_host: "app-salaire.guillaume.form"
+
+webserver_host: "app-salaire.guillaume.form"
+

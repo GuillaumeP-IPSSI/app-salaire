@@ -1,0 +1,36 @@
+---
+# tasks file for apache
+
+- name: Installation Apache
+  yum: 
+   name: " {{ item }}"
+   state: present
+  loop: 
+   "{{ packages }}"
+
+- name: Droits donnés au dossier HTTP
+  file: 
+    path: /var/www/html
+    state: directory
+    mode: '0755'
+
+- name: Supression du fichier par défaut
+  file: 
+    path: /var/www/html/index.html
+    state: absent
+
+- name: Importer fichiers sources
+  copy: 
+    src: app/
+    dest: /var/www/html/
+
+- name: Déploiement de la base de données PHP
+  template:
+    src: "db-config.php.j2"
+    dest: "/var/www/html/db-config.php" 
+
+- name: Redémarrage Apache
+  systemd:
+   name: httpd
+   state: restarted
+   enabled: yes
